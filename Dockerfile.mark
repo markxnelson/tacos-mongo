@@ -1,0 +1,2 @@
+FROM iad.ocir.io/odx-pipelines/spinnaker/tacos-mongo:latest
+CMD mongod
