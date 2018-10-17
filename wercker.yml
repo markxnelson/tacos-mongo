@@ -1,0 +1,18 @@
+# Copyright 2018, Oracle Corporation and/or its affiliates. All rights reserved.
+
+box: mongo:3.6
+
+build:
+  steps:
+  - script: 
+    code: | 
+      sleep 10
+      mongo mongo < init.mongo
+  - internal/docker-push:
+      username: $DOCKER_USERNAME
+      password: $DOCKER_PASSWORD
+      cmd: mongod
+      tag: latest
+      ports: "27017"
+      repository: iad.ocir.io/odx-pipelines/spinnaker/tacos-mongo
+      registry: https://iad.ocir.io/v2
